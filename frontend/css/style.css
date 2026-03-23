@@ -1,0 +1,217 @@
+/* LIGHT THEME */
+:root {
+    --primary: #007bff;
+    --primary-dark: #0056b3;
+    --primary-light: #66b3ff;
+    --secondary: #f8f9fa;
+    --success: #28a745;
+    --danger: #dc3545;
+    --bg-dark: #ffffff;
+    --bg-darker: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-light: #000000;
+    --text-muted: #333333;
+    --border-dark: #dee2e6;
+    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+/* Override Bootstrap text colors for better readability */
+.text-muted,
+.navbar-text,
+.small {
+    color: #000000 !important;
+}
+
+/* NAVBAR */
+.navbar {
+    background: var(--bg-secondary) !important;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.navbar-brand {
+    color: var(--text-light) !important;
+    font-weight: 700;
+}
+
+.nav-link {
+    color: var(--text-muted) !important;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--text-light) !important;
+}
+
+/* CARD */
+.card {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-dark) !important;
+    color: var(--text-light) !important;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light) !important;
+    transform: translateY(-4px);
+}
+
+.card-body {
+    color: var(--text-light);
+}
+
+.card-title {
+    color: var(--text-light) !important;
+}
+
+/* FORM CONTROLS */
+.form-control,
+.form-select {
+    background: var(--bg-dark) !important;
+    border: 1px solid var(--border-dark) !important;
+    color: var(--text-light) !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--bg-secondary) !important;
+    border-color: var(--primary-light) !important;
+    color: var(--text-light) !important;
+    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted) !important;
+}
+
+.form-label {
+    color: var(--text-light) !important;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: white !important;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-light) !important;
+    border-color: var(--primary-light) !important;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-dark) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--border-dark) !important;
+    border-color: var(--text-muted) !important;
+}
+
+.btn-danger {
+    background: var(--danger) !important;
+    border-color: var(--danger) !important;
+}
+
+.btn-danger:hover {
+    background: #f85149 !important;
+    border-color: #f85149 !important;
+}
+
+/* LIST GROUP */
+.list-group-item {
+    background: var(--bg-dark) !important;
+    border: 1px solid var(--border-dark) !important;
+    color: var(--text-light) !important;
+    transition: all 0.2s;
+}
+
+.list-group-item:hover {
+    background: var(--bg-secondary) !important;
+    border-color: var(--primary-light) !important;
+}
+
+/* HR */
+hr {
+    border-color: var(--border-dark) !important;
+    opacity: 1;
+}
+
+/* TEXT UTILITIES */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-primary {
+    color: var(--primary-light) !important;
+}
+
+/* SHADOWS */
+.shadow-sm {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg) !important;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.3s ease;
+}
+
+/* MODAL */
+.modal-content {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-dark) !important;
+    color: var(--text-light) !important;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-dark) !important;
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-dark) !important;
+}
+
+.close {
+    color: var(--text-light) !important;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-dark);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
