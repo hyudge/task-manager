@@ -1,24 +1,10 @@
 <?php
-require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/../backend/auth.php';
 
 requireLogin();
 
-$userId = $_SESSION['user']['id'];
-$error = '';
-$success = false;
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'] ?? '';
-    $description = $_POST['description'] ?? '';
-
-    if (addTask($userId, $title, $description)) {
-        $success = true;
-        header('Location: index.php?success=1');
-        exit;
-    } else {
-        $error = 'Erreur lors de l\'ajout de la tâche.';
-    }
-}
+$error = isset($_GET['error']);
+$success = isset($_GET['success']);
 ?>
 
 <!DOCTYPE html>
@@ -58,10 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </h2>
 
         <?php if ($error): ?>
-            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+            <div class="alert alert-danger">Erreur lors de l'ajout de la tâche.</div>
         <?php endif; ?>
 
-                <form method="POST">
+                <form action="../backend/add_task.php" method="POST">
                     <div class="mb-3">
                         <label for="title" class="form-label">
                             <i class="fas fa-heading"></i> Titre *

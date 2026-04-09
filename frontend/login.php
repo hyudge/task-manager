@@ -6,7 +6,7 @@
  * Formulaire de connexion.
  * Utilise loginUser() depuis auth.php pour valider les identifiants.
  */
-require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/../backend/auth.php';
 
 // Si l'utilisateur est déjà connecté, on le redirige directement.
 if (isLoggedIn()) {

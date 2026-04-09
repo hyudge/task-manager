@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/../backend/auth.php';
 
 requireLogin();
 
@@ -103,12 +103,12 @@ $completedTasks = array_filter($tasks, fn($t) => !empty($t['completed']));
                             </div>
                             <div class="col-md-4 text-end">
                                 <div class="btn-group-task justify-content-end">
-                                    <a href="toggle_task.php?id=<?= urlencode($task['id']) ?>" 
+                                    <a href="../backend/toggle_task.php?id=<?= urlencode($task['id']) ?>" 
                                        class="btn btn-success btn-sm"
                                        title="Marquer comme complétée">
                                         <i class="fas fa-check"></i> Compléter
                                     </a>
-                                    <a href="delete_task.php?id=<?= urlencode($task['id']) ?>" 
+                                    <a href="../backend/delete_task.php?id=<?= urlencode($task['id']) ?>" 
                                        class="btn btn-danger btn-sm"
                                        onclick="return confirm('Êtes-vous sûr ?')"
                                        title="Supprimer la tâche">
@@ -144,12 +144,12 @@ $completedTasks = array_filter($tasks, fn($t) => !empty($t['completed']));
                             </div>
                             <div class="col-md-4 text-end">
                                 <div class="btn-group-task justify-content-end">
-                                    <a href="toggle_task.php?id=<?= urlencode($task['id']) ?>" 
+                                    <a href="../backend/toggle_task.php?id=<?= urlencode($task['id']) ?>" 
                                        class="btn btn-warning btn-sm"
                                        title="Marquer comme non complétée">
                                         <i class="fas fa-redo"></i> Réactiver
                                     </a>
-                                    <a href="delete_task.php?id=<?= urlencode($task['id']) ?>" 
+                                    <a href="../backend/delete_task.php?id=<?= urlencode($task['id']) ?>" 
                                        class="btn btn-danger btn-sm"
                                        onclick="return confirm('Êtes-vous sûr ?')"
                                        title="Supprimer la tâche">

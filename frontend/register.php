@@ -5,7 +5,7 @@
  * Formulaire d'inscription. Crée un nouvel utilisateur via registerUser()
  * et redirige vers le dashboard après création.
  */
-require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/../backend/auth.php';
 
 // Si l'utilisateur est déjà connecté, on le redirige vers le dashboard.
 if (isLoggedIn()) {
