@@ -62,6 +62,14 @@ $success = isset($_GET['success']);
                         <textarea id="description" name="description" class="form-control" rows="4" placeholder="Décrivez votre tâche..."></textarea>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="due_date" class="form-label">
+                            <i class="fas fa-calendar-alt"></i> Date limite (optionnel)
+                        </label>
+                        <input type="datetime-local" id="due_date" name="due_date" class="form-control" placeholder="Sélectionnez la date et l'heure limites">
+                        <small class="form-text text-muted">Si vous définissez une date limite, vous recevrez une alerte email si la tâche n'est pas complétée.</small>
+                    </div>
+
                     <div class="d-flex gap-2">
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-check"></i> Ajouter la tâche

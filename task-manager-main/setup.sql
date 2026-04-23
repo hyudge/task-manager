@@ -18,14 +18,14 @@ CREATE TABLE IF NOT EXISTS tasks (
     title VARCHAR(255) NOT NULL,
     description TEXT,
     completed BOOLEAN DEFAULT FALSE,
+    due_date DATETIME,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
     INDEX idx_user_id (user_id),
-    INDEX idx_created_at (created_at)
+    INDEX idx_created_at (created_at),
+    INDEX idx_due_date (due_date),
+    INDEX idx_completed (completed)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Index pour email
 CREATE INDEX IF NOT EXISTS idx_email ON users(email);
-
--- Ajouter la colonne completed si elle n'existe pas (pour les migrations)
-ALTER TABLE tasks ADD COLUMN completed BOOLEAN DEFAULT FALSE AFTER description;

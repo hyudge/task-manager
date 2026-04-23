@@ -7,8 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $userId = $_SESSION['user']['id'];
     $title = $_POST['title'] ?? '';
     $description = $_POST['description'] ?? '';
+    $dueDate = $_POST['due_date'] ?? null;
 
-    if (addTask($userId, $title, $description)) {
+    if (addTask($userId, $title, $description, $dueDate)) {
         header('Location: ../frontend/index.php?success=1');
         exit;
     } else {

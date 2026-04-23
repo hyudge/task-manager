@@ -100,6 +100,22 @@ $completedTasks = array_filter($tasks, fn($t) => !empty($t['completed']));
                                     <i class="fas fa-calendar"></i>
                                     Créée le <?= date('d/m/Y à H:i', strtotime($task['created_at'] ?? 'now')) ?>
                                 </div>
+                                <?php if (!empty($task['due_date'])): ?>
+                                    <?php 
+                                        $dueDate = new DateTime($task['due_date']);
+                                        $now = new DateTime();
+                                        $isOverdue = $dueDate < $now;
+                                    ?>
+                                    <div class="task-due-date">
+                                        <i class="fas fa-hourglass-end"></i>
+                                        Échéance : <?= $dueDate->format('d/m/Y à H:i') ?>
+                                        <?php if ($isOverdue): ?>
+                                            <span class="badge bg-danger"><i class="fas fa-exclamation-triangle"></i> EN RETARD</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning"><i class="fas fa-clock"></i> <?= $dueDate->diff($now)->format('%d j %h h') ?> restants</span>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-4 text-end">
                                 <div class="btn-group-task justify-content-end">
@@ -141,6 +157,12 @@ $completedTasks = array_filter($tasks, fn($t) => !empty($t['completed']));
                                     <i class="fas fa-calendar"></i>
                                     Créée le <?= date('d/m/Y à H:i', strtotime($task['created_at'] ?? 'now')) ?>
                                 </div>
+                                <?php if (!empty($task['due_date'])): ?>
+                                    <div class="task-due-date">
+                                        <i class="fas fa-hourglass-end"></i>
+                                        Échéance : <?= date('d/m/Y à H:i', strtotime($task['due_date'])) ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                             <div class="col-md-4 text-end">
                                 <div class="btn-group-task justify-content-end">

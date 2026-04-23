@@ -30,7 +30,7 @@ function registerUser($name, $email, $password, &$error = null) {
         return false;
     }
 
-    $id = bin2hex(random_bytes(16));
+    $id = 'u' . bin2hex(random_bytes(15));
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     try {
@@ -94,16 +94,28 @@ function getUserTasks($userId) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function addTask($userId, $title, $description) {
+function addTask($userId, $title, $description, $dueDate = null) {
     global $pdo;
 
     if (!$title) return false;
 
-    $id = bin2hex(random_bytes(12));
+    $id = 't' . bin2hex(random_bytes(15));
 
-    $stmt = $pdo->prepare("INSERT INTO tasks (id, user_id, title, description, created_at) VALUES (?, ?, ?, ?, NOW())");
+    // Formater la date limite si fournie
+    $formattedDueDate = null;
+    if ($dueDate) {
+        try {
+            $dateObj = new DateTime($dueDate);
+            $formattedDueDate = $dateObj->format('Y-m-d H:i:s');
+        } catch (Exception $e) {
+            // Date invalide, ignorer
+            $formattedDueDate = null;
+        }
+    }
 
-    return $stmt->execute([$id, $userId, $title, $description]);
+    $stmt = $pdo->prepare("INSERT INTO tasks (id, user_id, title, description, due_date, created_at) VALUES (?, ?, ?, ?, ?, NOW())");
+
+    return $stmt->execute([$id, $userId, $title, $description, $formattedDueDate]);
 }
 
 function deleteTask($userId, $taskId) {
